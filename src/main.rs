@@ -27,9 +27,9 @@ fn get_xml (s: String) -> String {
 fn read_config () -> Result<Config, Box<dyn Error>> {
     let config: Config = {
         let config_text = fs::read_to_string("~/.journal-news.toml")?;
-        toml::from_str(&config_text)?;
+        toml::from_str(&config_text)?
     };
-    return config;
+    return Ok(config);
 }
 
 #[tokio::main]
