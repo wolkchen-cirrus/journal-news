@@ -26,8 +26,9 @@ fn read_config () -> Result<Vars, Box<dyn Error>> {
 
 #[tokio::main]
 async fn main () -> Result<(), Box<dyn Error>> {
-    let conf = read_config()?;
-    println!("{:?}", serde_json::to_string_pretty(&conf));
+    let inputs = read_config()?;
+    let test1: &Value = inputs.config.get("hours").unwrap();
+    println!("{:?}", test1);
     let args: Vec<String> = env::args().collect();
     let action: &String = &args[1];
     let test = String::from("test");
